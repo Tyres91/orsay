@@ -16,23 +16,22 @@ module.exports = class Publish extends Orsay {
 
   async getPublishedSlides (force) {
     const skipped = ['index']
-    const slides = ['./public/*', '!./public/assets/']
+    const slidePattern = ['./public/*', '!./public/assets/']
     const dirOnly = {
       expandDirectories: false,
       onlyFiles: false
     }
 
-    return [
-      ...skipped,
-      ...(force ? [] : await globby(slides, dirOnly).map(x => path.basename(x))
-      )
-    ]
+    const filenames = await globby(slidePattern, dirOnly)
+    const slides = filenames.map(x => path.basename(x))
+
+    return [...skipped, ...(force ? [] : slides)]
   }
 
   async handle ({ name }, { force }) {
     name = this.extractName(name)
 
-    const published = await this.getPublishedSlides(!!force || !!name)
+    const published = await this.getPublishedSlides(!!force || name !== '*')
     const slides = await this.findFiles(name)
 
     slides
