@@ -1,0 +1,31 @@
+{
+  "name": "orsay",
+  "description": "cli utils for mdx-deck based showcases",
+  "keywords": [
+    "whotheheck",
+    "mdx",
+    "slides",
+    "utils",
+    "cli"
+  ],
+  "version": "1.0.0",
+  "license": "MIT",
+  "bin": {
+    "orsay": "index.js"
+  },
+  "author": {
+    "name": "Felix Heck",
+    "email": "hi@whotheheck.de",
+    "url": "https://whotheheck.de"
+  },
+  "dependencies": {
+    "@adonisjs/ace": "^5.0.4",
+    "del": "^3.0.0",
+    "globby": "^8.0.1",
+    "uffbasse": "^1.1.0"
+  },
+  "scripts": {},
+  "devDependencies": {
+    "standard": "^11.0.1"
+  }
+}
