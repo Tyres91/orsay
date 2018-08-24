@@ -1,0 +1,10 @@
+{
+  "public": "public",
+  "unlisted": [
+    "assets"
+  ],
+  "redirects": [
+    { "source": "public/:id/card.png", "destination": ":id/card.png" },
+    { "source": "public/:id/", "destination": ":id/" }
+  ]
+}

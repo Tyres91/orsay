@@ -22,9 +22,10 @@
     "@adonisjs/ace": "^5.0.4",
     "del": "^3.0.0",
     "globby": "^8.0.1",
+    "serve": "^10.0.0",
+    "serve-handler": "^5.0.0",
     "uffbasse": "^1.1.0"
   },
-  "scripts": {},
   "devDependencies": {
     "standard": "^11.0.1"
   }
