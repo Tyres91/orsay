@@ -8,7 +8,7 @@ The name is based on the Musée d'Orsay - mdo - a famous gallery.
 ## Installation
 For installation use the [Node Package Manager][npm]:
 ```
-$ npm i -g https://github.com/felixheck/orsay
+$ npm i -g orsay
 ```
 
 ## CLI
