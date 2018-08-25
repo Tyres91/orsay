@@ -1,8 +1,5 @@
-console.log(process.cwd())
-
-const handler = require('serve-handler')
-const http = require('http')
 const path = require('path')
+const fs = require('fs')
 const deepmerge = require('deepmerge')
 const Orsay = require('./orsay')
 const defaultOptions = require('../serve.json')
@@ -10,20 +7,23 @@ const defaultOptions = require('../serve.json')
 module.exports = class Dev extends Orsay {
   static get signature () {
     return `serve
-      { -c, --config=@value: additional serve-handler config file, relative path }
-      { -m, --merge: deepmerge configs }
+      { -c, --config=@value: custom serve-handler config file, relative path }
+      { -m, --merge: enable deepmerging both configs }
     `
   }
 
   static get description () {
-    return 'Serve slides in production mode'
+    return 'Get configuration for production mode'
   }
 
   retrieveOptions (config, merge) {
-    const optionsPath = path.join(process.cwd(), config)
-    const options = config ? require(optionsPath) : {}
+    let options = {}
 
-    if (merge) {
+    if (config) {
+      options = require(path.join(process.cwd(), config))
+    }
+
+    if (merge || !config) {
       return deepmerge(defaultOptions, options)
     }
 
@@ -32,14 +32,9 @@ module.exports = class Dev extends Orsay {
 
   async handle (inputs, { config, merge }) {
     const options = this.retrieveOptions(config, merge)
-    console.log(options)
+    const content = JSON.stringify(options, null, 2)
+    const configPath = path.join(process.cwd(), 'serve.json')
 
-    const server = http.createServer((request, response) => (
-      handler(request, response, options)
-    ))
-
-    server.listen(5000, () => {
-      this.announce('running at http://localhost:5000/')
-    })
+    fs.writeFileSync(configPath, content)
   }
 }
