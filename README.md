@@ -32,10 +32,18 @@ Run a specific slide in the root directory in development mode.
 The view gets updated automatically and runs at `:8080`.
 
 
-#### `orsay serve`
+#### `orsay serve [-c|--config] [-m|--merge]`
 Serve all slides including the index in `./public ` in production mode.  
 Uses [`serve-handler`][servehandler] under the hood and runs at `:5000`.  
 Redirects `./public/:id/card.png` to `./:id/card.png` as well as `./public/:id/` to `./:id/`.
+
+- `-c|--config`  
+Optional flag to pass relative path of additional config file.  
+
+- `-m|--merge`  
+Optional flag to deepmerge the custom with the default configs.  
+Otherwise it gets replaced.
+
 
 ## Contribution
 Fork this repository and push in your ideas.
