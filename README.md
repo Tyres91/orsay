@@ -39,7 +39,7 @@ The view gets updated automatically and runs at `:8080`.
 
 
 #### `orsay serve [-c|--config] [-m|--merge]`
-Saves the default `serve` configs in root directory. 
+Saves the default `serve` configs in root directory.  
 Redirects `./public/:id/card.png` to `./:id/card.png` as well as `./public/:id/` to `./:id/`.
 
 - `-c|--config`  
