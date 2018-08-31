@@ -26,6 +26,12 @@ If enabled the script behaves like with an enabled `-f` flag.
 Optional flag to enable the force mode.  
 The force mode re-publishes even already published slides.
 
+#### `orsay hide [name]`
+Unpublish all files related to `<slide>.mdx` from `./public/`.
+
+- `name`  
+File in the root directory which should be unpublished exclusively.   
+Files with and without `.mdx` extension are allowed.  
 
 #### `orsay dev <name>`
 Run a specific slide in the root directory in development mode.  

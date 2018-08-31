@@ -40,6 +40,10 @@ module.exports = class Orsay extends ace.Command {
     execSync('cp -r ./assets/ public/assets/')
   }
 
+  hide (name) {
+    execSync(`rm -rf ./public/${name}/`)
+  }
+
   cleanup () {
     del(['./public/**/TEMP/'])
   }
